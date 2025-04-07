@@ -60,13 +60,14 @@ By following the instruction,
 
 ## Citation
 If you find our paper helpful, please consider citing our papers and staring us! Thanks!
-
+```
 @article{liu2025instructrestore,
   title={InstructRestore: Region-Customized Image Restoration with Human Instructions},
   author={Liu, Shuaizheng and Ma, Jianqi and Sun, Lingchen and Kong, Xiangtao and Zhang, Lei},
   journal={arXiv preprint arXiv:2503.24357},
   year={2025}
 }
+```
 
 
 
