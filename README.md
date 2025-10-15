@@ -14,6 +14,9 @@ Lei Zhang<sup>1,2</sup>
 <sup>1</sup>The Hong Kong Polytechnic University, <sup>2</sup>OPPO Research Institute
 </div>
 
+## ⏰ News
+- **2025.9.19** : The paper has been accepted in NeurIPS 2025 ! 
+
 ##  💡  Overview
 
 ![InstructRestore](figs/teasers1.png)
@@ -23,11 +26,6 @@ Our proposed **InstructionRestore** framework enables region-customized restorat
 (a) current methods tend to incorrectly restore the bokeh blur, while our method allows for adjustable control over the degree of blur based on user instructions. 
 
 (b) existing methods fail to achieve region-specific enhancement intensities, while our approach can simultaneously suppress the over-enhancement in areas of building and improve the visual quality in areas of leaves.
-
-## TODO
-- [ ] Release model checkpoint and inference code
-- [ ] Release dataset
-- [ ] Release training code
 
 
 ##  🎨 Application
@@ -57,6 +55,56 @@ By following the instruction,
 
 ## 🌱  Dataset Construction Pipeline
 ![InstructRestore](figs/Dataset_construction.png)
+
+## ⚙ Dependencies and Installation
+```shell
+## git clone this repository
+git clone https://github.com/shuaizhengliu/InstructRestore.git
+cd InstructRestore
+
+
+# create an environment
+conda create -n InstructRestore python=3.10
+conda activate InstructRestore
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+## 🚀 Demo & Quick inferences 
+
+
+## Tri-IR Dataset
+
+High-quality triplet datasets including GT, semantic mask annotations, and region-level captions are extremely scarce, yet crucial for controllable local image restoration. To fill this gap, we introduce Tri-IR, a large-scale, high-quality dataset consisting of 560k GT-mask-local caption triplets. We provide public access via Google Drive: [Tri-IR Dataset (Google Drive)](https://drive.google.com/drive/folders/1ilrbsjvTTg-c7L6gj4eqXbHCanFOTtaz?usp=sharing). The entire dataset is approximately 161GB in size.
+
+## 🏋️ Training
+#### Step1: Prepare training data
+ Please refer to the instructions in [Data_process/README.md](../InstructRestore/Data_process/README.md) to download and process the Tri-IR dataset. Use the processed paired data for training.
+
+#### Step2: Train model
+1. Download pretrained [Stable Diffusion v2.1](https://huggingface.co/stabilityai/stable-diffusion-2-1-base) to provide generative capabilities.
+
+    ```shell
+    wget https://huggingface.co/stabilityai/stable-diffusion-2-1-base/resolve/main/v2-1_512-ema-pruned.ckpt --no-check-certificate
+    ```
+
+2. Training based on data of normal GT.
+
+    Please remember to update the variable paths in the `sh` script (such as the paths to your training data, save directory, and pretrained weights) to your own directories before running the training.
+
+    ```shell
+    bash train_localbir_maskdecoder.sh
+    ```
+
+3. Training by adding data of Bokeh GT.
+   
+   After the training on normal data has converged and the restoration performance stabilizes, you can further improve the model's ability to handle bokeh effects by including the Bokeh GT data for joint training. Please remember to update the paths in the corresponding `.sh` script below to your own directories before running the training.
+    ```shell
+    bash train_localbir_maskdecoder_bokeh_dataratio.sh
+    ```
+
+## 🧪 Evaluation
+
 
 ## Citation
 If you find our paper helpful, please consider citing our papers and staring us! Thanks!
