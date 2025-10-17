@@ -6,9 +6,9 @@ This folder contains scripts and tools for processing InstructRestore training d
 
 ### Data Source
 Download the original data from the following link:
-```
-[Please fill in the data download link here]
-```
+
+ [Tri-IR Dataset (Google Drive)](https://drive.google.com/drive/folders/1ilrbsjvTTg-c7L6gj4eqXbHCanFOTtaz?usp=sharing)
+
 unzip the data to your path 
 ```
 'Original_data_folder path'
