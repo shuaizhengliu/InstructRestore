@@ -1,0 +1,16 @@
+numpy==1.22.4
+scikit-image==0.20.0
+scikit-learn==1.3.0
+scipy==1.11.1
+torch==2.0.1
+torchvision==0.15.2
+tensorboard==2.14.0
+transformers==4.32.0
+diffusers==0.30.0
+tokenizers==0.12.1
+tqdm==4.65.0
+accelerate==0.21.0
+opencv-python
+openai-clip
+open-clip-torch
+Pillow
